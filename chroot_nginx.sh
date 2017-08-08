@@ -54,20 +54,14 @@ function nginx_libs {
     cp /lib64/libresolv.so.2 $D/lib64
     cp /lib64/libselinux.so.1 $D/lib64
     cp /lib64/liblzma.so.5 $D/lib64 
-}
-
-function make_php {
-    
-}
-
-# Kill existing nginx before starting chrooted nginx
-stop_proc=`ps -ef | grep nginx | awk '{print $2}'`
-kill -9 $stop_proc
 
 # Function calls
 make_chroot
 nginx_libs
 
+# Kill existing nginx before starting chrooted nginx
+stop_proc=`ps -ef | grep nginx | awk '{print $2}'`
+kill -9 $stop_proc
 
 # Starts chroot jail
 chroot $D /etc/nginx
