@@ -15,5 +15,5 @@ Chroot jails are particularly difficult to setup and maintain if you are using m
 If you are using apache and you do not want to use this script to create the /etc /dev and /lib directories, then the mod_chroot() module will allow you to run a chroot jail with no additional files. The chroot() system call is performed at the end of startup procedure – when all libraries are loaded and log files open. For instructions on installing and configuring the module, follow this link:
 https://www.cyberciti.biz/tips/chroot-apache-under-rhel-fedora-centos-linux.html
 
-# TO DO
+### TO DO
 - add a php function to scripts for mroe flexibility 
