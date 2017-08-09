@@ -1,14 +1,14 @@
 ## Chrooting Web Servers
 
-It is important to not that chrooting a web server does not make it automatically more secure. The benefit is that it restricts apache/nginx and their subprocceses to a very small subset of the filesystem. So, the beenfit isn;t a smuch defensive as it is moreso containing a potential threat. 
+It is important to not that chrooting a web server does not make it automatically more secure. The benefit is that it restricts apache/nginx and their subprocceses to a very small subset of the filesystem. So, the benefit isn't as much defensive, but moreso to contain a potential threat. 
 
 ## Advantages
 
-As previosuly stated, if an attacker is successful in gaining entry, they will only be restricted to the files and binaries within the chrrot jail. If yo uare using apache, this has the additional benefit of potentially dangerous CGI scripts not having access to your filesystem. 
+As previosuly stated, if an attacker is successful in gaining entry, they will only be restricted to the files and binaries within the chroot jail. If you are using apache, this has the additional benefit of potentially dangerous CGI scripts not having access to your server's filesystem. 
 
 ## Caveats
 
-Chroot jails are particularly difficult to setup and maintain if you are using more than just the base web stack or running external software, i.e a LAMP stack or a similar setup. These scripts only provide the base setup for your web server over SSL. So, at the least, you will be provided with a base configuartion / filesystem.
+Chroot jails are particularly difficult to setup and maintain if you are using more than just the base web stack or running external software, i.e a LAMP stack or a similar setup. These scripts only provide the base setup for your web server over SSL. So, at the least, you will be provided with a base configuartion / filesystem  for the jail.
 
 ## Additional
 
