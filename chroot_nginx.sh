@@ -28,7 +28,6 @@ function make_chroot {
     cp -farv /etc/nginx/* $D/etc/
     cp -avr /etc/{ld.so.conf.d,prelink.conf.d} $D/etc
     cp /sbin/nginx $D/sbin/
-    cp /run/nginx.pid $D/run/ 
     cp -r /usr/share/nginx/* $D/usr/share/nginx
     cp -r /var/lib/nginx $D/var/lib/nginx
 }
@@ -60,14 +59,13 @@ make_chroot
 nginx_libs
 
 # Kill existing nginx before starting chrooted nginx
-stop_proc=`ps -ef | grep nginx | awk '{print $2}'`
-kill -9 $stop_proc
+killall -9 nginx
 
-# Starts chroot jail
-chroot $D /etc/nginx
+# Starts chroot jail (this will start into chroot based on the modifications made to the nginx.service file)
+systemctl start nginx
 
-# Sarts chroot jail after system reboot
-echo 'chroot $D /etc/nginx' >> /etc/rc.local
+# Sarts chroot jail after system reboot (only for init systems)
+#echo 'chroot $D /etc/nginx' >> /etc/rc.local
 
 
 
