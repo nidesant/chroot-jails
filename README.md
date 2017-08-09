@@ -10,6 +10,10 @@ As previosuly stated, if an attacker is successful in gaining entry, they will o
 
 Chroot jails are particularly difficult to setup and maintain if you are using more than just the base web stack or running external software, i.e a LAMP stack or a similar setup. These scripts only provide the base setup for your web server over SSL. So, at the least, you will be provided with a base configuartion / filesystem  for the jail.
 
+## Systemd Distros
+
+On a classic System-V-based operating system it is relatively easy to use chroot() environments. For example, to start a specific daemon for test or other reasons inside a chroot()-based guest OS tree, mount /proc, /sys and a few other API file systems into the tree, and then use chroot(1) to enter the chroot, and finally run the SysV init script via /sbin/service from inside the chroot. However, on systemd based distros, this becomes more complicated. The two main reasons are, 1) the actual daemon is always spawned off PID 1 and thus inherits the chroot() settings from it, it is irrelevant whether the client which asked for the daemon to start is chroot()ed or not, and, 2) since systemd actually places its local communications sockets in /run/systemd a process in a chroot() environment will not even be able to talk to the init system. There are detailed steps to working around this in this article: http://0pointer.de/blog/projects/changing-roots
+
 ## Additional
 
 If you are using apache and you do not want to use this script to create the /etc /dev and /lib directories, then the mod_chroot() module will allow you to run a chroot jail with no additional files. The chroot() system call is performed at the end of startup procedure – when all libraries are loaded and log files open. For instructions on installing and configuring the module, follow this link:
