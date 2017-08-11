@@ -20,4 +20,4 @@ If you are using apache and you do not want to use this script to create the /et
 https://www.cyberciti.biz/tips/chroot-apache-under-rhel-fedora-centos-linux.html
 
 ### TO DO
-- add a php function to scripts for mroe flexibility 
+- add a php function to scripts for more flexibility 
