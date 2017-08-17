@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-D=/var/www/chroot
+D=/var/www/chroot/
 
 function make_chroot {
   mkdir -p $D
@@ -66,10 +66,10 @@ make_chroot
 apache_libs
 
 # Kill all exisiting apache processes before starting chroot jail
-killall httpd
+killall -9 httpd
 
 # Starts chroot jail
-chroot $D /etc/httpd
+systemctl start httpd
 
 # Will start chroot jail after system reboot
-echo '/usr/sbin/chroot $D /etc/httpd' >> /etc/rc.d/rc.local 
+#echo '/usr/sbin/chroot $D /etc/httpd' >> /etc/rc.d/rc.local 
