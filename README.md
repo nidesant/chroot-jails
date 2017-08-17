@@ -21,9 +21,6 @@ https://www.cyberciti.biz/tips/chroot-apache-under-rhel-fedora-centos-linux.html
 
 ### TO DO
 - add a php function to scripts for more flexibility 
-
 - configure syslog 
-
 - make debain scripts 
-
--configure https
+- configure https
