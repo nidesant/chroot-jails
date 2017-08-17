@@ -16,7 +16,7 @@ On a classic System-V-based operating system it is relatively easy to use chroot
 
 ```
 [Unit]
-Description=A high performance web server and a reverse proxy server
+Description=A high performance web server and a reverse proxy server in a chroot jail
 After=syslog.target network.target
 
 [Service]
