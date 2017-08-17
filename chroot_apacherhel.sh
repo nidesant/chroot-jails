@@ -38,3 +38,38 @@ function make_chroot {
   chattr +i $D/etc/passwd
   chattr +i $D/etc/group 
 }
+
+function apache_libs {
+  cp /lib64/libpcre.so.1 $D/lib64/
+  cp /lib64/libselinux.so.1 $D/lib64/
+  cp /lib64/libaprutil-1.so.0 $D/lib64/
+  cp /lib64/libcrypt.so.1 $D/lib64/
+  cp /lib64/libexpat.so.1 $D/lib64/
+  cp /lib64/libdb-5.3.so $D/lib64/
+  cp /lib64/libapr-1.so.0 $D/lib64/
+  cp /lib64/libpthread.so.0 $D/lib64/
+  cp /lib64/libdl.so.2 $D/lib64/
+  cp /lib64/libc.so.6 $D/lib64/
+  cp /lib64/ld-linux-x86-64.so.2 $D/lib64/ 
+  cp /lib64/libuuid.so.1 $D/lib64/
+  cp /lib64/libfreebl3.so $D/lib64/
+
+  # Libraries for networking functionality
+  cp /lib64/libnss_compat* $D/lib64/
+  cp /lib6464/libnss_dns* $D/lib64/
+  cp /lib6464/libnss_files* $D/lib64/
+  cp /lib6464/libnsl* $D/lib64/
+}
+
+# Fucntion calls
+make_chroot
+apache_libs
+
+# Kill all exisiting apache processes before starting chroot jail
+killall httpd
+
+# Starts chroot jail
+chroot $D /etc/httpd
+
+# Will start chroot jail after system reboot
+echo '/usr/sbin/chroot $D /etc/httpd' >> /etc/rc.d/rc.local 
